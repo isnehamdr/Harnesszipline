@@ -16,6 +16,7 @@ const Navbar = () => {
 { name: 'Services', url: '/services' },
 { name: 'Blog', url: '/blog' },
                 { name: 'Gallery', url: '/gallery' },
+        { name: 'Contact', url: '/contact' },
     ]
 
     const overlayRef = useRef(null)
@@ -134,6 +135,7 @@ const Navbar = () => {
 
     const toggleMenu = () => setIsMobileMenuOpen(v => !v)
     const closeMenu = () => setIsMobileMenuOpen(false)
+    const isActivePath = (url) => location.pathname === url || location.pathname.startsWith(`${url}/`)
 
     const barColor = isMobileMenuOpen
         ? '#fff'
@@ -165,7 +167,7 @@ const Navbar = () => {
                     {/* DESKTOP MENU */}
                     <div className="hidden md:flex items-center gap-6">
                         {navItems.map(item => {
-                            const active = location.pathname === item.url
+                            const active = isActivePath(item.url)
 
                             return (
                                 <Link
@@ -184,9 +186,9 @@ const Navbar = () => {
                             )
                         })}
 
-                        <button className="px-5 py-2 bg-amber-500 text-white text-sm rounded">
+                        <Link to="/contact" className="px-5 py-2 bg-amber-500 text-white text-sm rounded">
                             Book Now
-                        </button>
+                        </Link>
                     </div>
 
                     {/* HAMBURGER */}
@@ -220,7 +222,7 @@ const Navbar = () => {
                 className="fixed top-0 left-0 h-full w-56 z-[140] flex flex-col pt-20 px-6 md:hidden"
             >
                 {navItems.map((item, i) => {
-                    const active = location.pathname === item.url
+                    const active = isActivePath(item.url)
 
                     return (
                         <Link
@@ -239,12 +241,14 @@ const Navbar = () => {
                     )
                 })}
 
-                <button
+                <Link
+                    to="/contact"
                     ref={bookBtnRef}
+                    onClick={closeMenu}
                     className="mt-6 px-4 py-2 bg-amber-500 text-white text-sm"
                 >
                     Book Now
-                </button>
+                </Link>
             </div>
         </>
     )

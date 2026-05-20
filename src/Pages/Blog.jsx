@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ActivityPage = () => {
+const Blog = () => {
     const heroRef = useRef(null)
     const textRef = useRef(null)
     const contentSectionRef = useRef(null)
@@ -18,178 +18,81 @@ const ActivityPage = () => {
             title: "Tower Restaurant",
             alt: "Tower Restaurant"
         },
-        {
-            id: 2,
-            image: "/images/wed.jpeg",
-            title: "Wedding Destination",
-            alt: "Wedding Destination"
-        },
-        {
-            id: 3,
-            image: "/images/room6.jpg",
-            title: "Conference Room",
-            alt: "Conference Room"
-        }, 
-        {
-            id: 4,
-            image: "/images/room6.jpg",
-            title: "Adventure Park",
-            alt: "Adventure Park"
-        },
-        {
-            id: 5,
-            image: "/images/wed.jpeg",
-            title: "Spa & Wellness",
-            alt: "Spa & Wellness"
-        },
-        {
-            id: 6,
-            image: "/images/room6.jpg",
-            title: "Kids Zone",
-            alt: "Kids Zone"
-        }
+        
+        
     ]
 
-    // useEffect(() => {
-    //     const ctx = gsap.context(() => {
-    //         // ── Hero entrance animation ──────────────────────────────
-    //         gsap.fromTo(
-    //             textRef.current,
-    //             { y: 80, opacity: 0 },
-    //             { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-    //         )
-
-    //         // ── Content section: scroll-over the hero ───────────────
-    //         gsap.fromTo(
-    //             contentSectionRef.current,
-    //             { yPercent: 100 },
-    //             {
-    //                 yPercent: 0,
-    //                 ease: 'power2.out',
-    //                 scrollTrigger: {
-    //                     trigger: heroRef.current,
-    //                     start: 'top top',
-    //                     end: 'bottom top',
-    //                     scrub: 0.8,
-    //                     pin: heroRef.current,
-    //                     pinSpacing: true,
-    //                 },
-    //             }
-    //         )
-
-    //         // ── Mask SVG animation ───────────────────────────────────
-    //         gsap.fromTo(
-    //             maskRef.current,
-    //             { scale: 1, opacity: 0, rotateZ: -5 },
-    //             {
-    //                 scale: 1,
-    //                 opacity: 1,
-    //                 rotateZ: 0,
-    //                 duration: 1.5,
-    //                 ease: 'back.out(0.5)',
-    //                 scrollTrigger: {
-    //                     trigger: heroRef.current,
-    //                     start: 'top center',
-    //                     end: 'bottom top',
-    //                     scrub: 1.2,
-    //                 },
-    //             }
-    //         )
-
-    //         // ── Content children with stagger ────────────────────────
-    //         if (contentRef.current && contentRef.current.children.length > 0) {
-    //             gsap.fromTo(
-    //                 contentRef.current.children,
-    //                 { opacity: 0, y: 60, scale: 0.95 },
-    //                 {
-    //                     opacity: 1,
-    //                     y: 0,
-    //                     scale: 1,
-    //                     duration: 0.8,
-    //                     stagger: 0.15,
-    //                     ease: 'elastic.out(0.6, 0.5)',
-    //                     scrollTrigger: {
-    //                         trigger: contentSectionRef.current,
-    //                         start: 'top 60%',
-    //                         end: 'top 30%',
-    //                         scrub: 0.5,
-    //                     },
-    //                 }
-    //             )
-    //         }
-    //     })
-
-    //     return () => ctx.revert()
-    // }, [])
-
     useEffect(() => {
-    const ctx = gsap.context(() => {
-        gsap.fromTo(
-            textRef.current,
-            { y: 80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-        )
-
-        gsap.fromTo(
-            contentSectionRef.current,
-            { yPercent: 100 },
-            {
-                yPercent: 0,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 0.8,
-                    pin: true,           // ✅ use `true` instead of heroRef.current
-                    pinSpacing: true,
-                    anticipatePin: 1,    // ✅ prevents jump/conflict
-                },
-            }
-        )
-
-        gsap.fromTo(
-            maskRef.current,
-            { scale: 1, opacity: 0, rotateZ: -5 },
-            {
-                scale: 1,
-                opacity: 1,
-                rotateZ: 0,
-                duration: 1.5,
-                ease: 'back.out(0.5)',
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: 'top center',
-                    end: 'bottom top',
-                    scrub: 1.2,
-                },
-            }
-        )
-
-        if (contentRef.current && contentRef.current.children.length > 0) {
+        const ctx = gsap.context(() => {
+            // ── Hero entrance animation ──────────────────────────────
             gsap.fromTo(
-                contentRef.current.children,
-                { opacity: 0, y: 60, scale: 0.95 },
+                textRef.current,
+                { y: 80, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+
+            // ── Content section: scroll-over the hero ───────────────
+            gsap.fromTo(
+                contentSectionRef.current,
+                { yPercent: 100 },
                 {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'elastic.out(0.6, 0.5)',
+                    yPercent: 0,
+                    ease: 'power2.out',
                     scrollTrigger: {
-                        trigger: contentSectionRef.current,
-                        start: 'top 60%',
-                        end: 'top 30%',
-                        scrub: 0.5,
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 0.8,
+                        pin: heroRef.current,
+                        pinSpacing: true,
                     },
                 }
             )
-        }
-    }, heroRef) // ✅ scope the context to heroRef
 
-    return () => ctx.revert()
-}, [])
+            // ── Mask SVG animation ───────────────────────────────────
+            gsap.fromTo(
+                maskRef.current,
+                { scale: 1, opacity: 0, rotateZ: -5 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    rotateZ: 0,
+                    duration: 1.5,
+                    ease: 'back.out(0.5)',
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top center',
+                        end: 'bottom top',
+                        scrub: 1.2,
+                    },
+                }
+            )
+
+            // ── Content children with stagger ────────────────────────
+            if (contentRef.current && contentRef.current.children.length > 0) {
+                gsap.fromTo(
+                    contentRef.current.children,
+                    { opacity: 0, y: 60, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        stagger: 0.15,
+                        ease: 'elastic.out(0.6, 0.5)',
+                        scrollTrigger: {
+                            trigger: contentSectionRef.current,
+                            start: 'top 60%',
+                            end: 'top 30%',
+                            scrub: 0.5,
+                        },
+                    }
+                )
+            }
+        })
+
+        return () => ctx.revert()
+    }, [])
 
     return (
         <>
@@ -201,7 +104,7 @@ const ActivityPage = () => {
             >
                 {/* Background Image */}
                 <img
-                    src="/images/swing.webp"
+                    src="/images/about3.jpeg"
                     alt="About Harness Zipline and Adventure Resort"
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />
@@ -213,19 +116,10 @@ const ActivityPage = () => {
                 <div className="relative z-20 w-full h-full flex flex-col justify-end items-center pb-10 lg:pb-20">
                     <div ref={textRef} className="text-center px-4">
                         <h2 className="text-white max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
-                          Activities
+                          See Our Blog
                         </h2>
 
-                        <h2 className="text-[#faa821] max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg mb-6">
-                            Experience and kill the fear
-                        </h2>
                         
-                        <p className="text-white/90 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed drop-shadow-md">
-                            Escape the ordinary and immerse yourself in tranquility. Surrounded by lush forests, 
-                            melodious bird songs, and fresh mountain air, our sanctuary offers the perfect blend 
-                            of comfort and wilderness. Whether you're seeking adventure or peaceful solitude, 
-                            nature welcomes you home.
-                        </p>
                     </div>
                 </div>
 
@@ -253,34 +147,7 @@ const ActivityPage = () => {
                         ref={contentRef}
                         className="relative z-10 w-full min-h-screen flex items-center justify-center"
                     >
-                        {/* Decorative Background Image - Only at Top Right Corner */}
-                        <div 
-                            className="
-                                absolute 
-                                top-24
-                                right-0 
-                                w-[300px]
-                                sm:w-[400px]
-                                md:w-[500px]
-                                lg:w-[600px]
-                                xl:w-[700px]
-                                h-[300px]
-                                sm:h-[400px]
-                                md:h-[500px]
-                                lg:h-[600px]
-                                xl:h-[700px]
-                                pointer-events-none
-                                opacity-30
-                                lg:opacity-40
-                                z-0
-                            "
-                            style={{
-                                backgroundImage: "url('/images/bg.png')",
-                                backgroundSize: "contain",
-                                backgroundPosition: "top right",
-                                backgroundRepeat: "no-repeat",
-                            }}
-                        />
+                        
 
                         {/* Content Container - Centered and Lower */}
                         <div className="
@@ -338,43 +205,12 @@ const ActivityPage = () => {
                                             WebkitMaskRepeat: "no-repeat",
                                         }}
                                     >
-                                        Activities
+                                     Blog
                                     </button>
 
-                                    <h2 className="
-                                        text-[#faa821]
-                                        text-2xl
-                                        sm:text-3xl
-                                        md:text-4xl
-                                        lg:text-5xl
-                                        font-bold
-                                        leading-tight
-                                        mb-4
-                                        sm:mb-6
-                                        px-2
-                                        relative
-                                        z-30
-                                    ">
-                                        Experience the Best Activities
-                                    </h2>
+                                    
 
-                                    <p className="
-                                        text-black/80
-                                        text-sm
-                                        sm:text-base
-                                        lg:text-lg
-                                        max-w-3xl
-                                        leading-relaxed
-                                        px-2
-                                        relative
-                                        z-30
-                                    ">
-                                        Step into a place where every moment becomes an experience.
-                                        From dining above breathtaking landscapes to celebrating
-                                        life's biggest occasions and hosting meaningful events,
-                                        Harness offers the perfect setting for adventure,
-                                        connection, and unforgettable memories.
-                                    </p>
+                                   
                                 </div>
 
                                 {/* ================= SERVICE CARDS ================= */}
@@ -481,4 +317,4 @@ const ActivityPage = () => {
     )
 }
 
-export default ActivityPage
+export default Blog

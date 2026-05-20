@@ -1,12 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import About2 from '../Component/About2'
-import Roomlisting from '../Component/Roomlisting'
+import Roomlayouts from '../Component/Roomlayouts'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const AboutPage = () => {
+const RoomPage = () => {
     const heroRef = useRef(null)
     const textRef = useRef(null)
     const contentSectionRef = useRef(null)
@@ -95,20 +94,31 @@ const AboutPage = () => {
             >
                 {/* Background Image */}
                 <img
-                    src="/images/about2.jpeg"
+                    src="/images/room7.jpeg"
                     alt="About Harness Zipline and Adventure Resort"
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />
 
                 {/* Dark Overlay */}
-            
+                <div className="absolute inset-0 bg-black/50 z-10"></div>
 
                 {/* Hero Text */}
                 <div className="relative z-20 w-full h-full flex flex-col justify-end items-center pb-10 lg:pb-20">
                     <div ref={textRef} className="text-center px-4">
                         <h2 className="text-white max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
-                            About Us
+                            Accomodation
                         </h2>
+
+                        <h2 className="text-[#faa821] max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg mb-6">
+                            Rest in the Heart of Nature
+                        </h2>
+                        
+                        <p className="text-white/90 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed drop-shadow-md">
+                            Escape the ordinary and immerse yourself in tranquility. Surrounded by lush forests, 
+                            melodious bird songs, and fresh mountain air, our sanctuary offers the perfect blend 
+                            of comfort and wilderness. Whether you're seeking adventure or peaceful solitude, 
+                            nature welcomes you home.
+                        </p>
                     </div>
                 </div>
 
@@ -134,83 +144,97 @@ const AboutPage = () => {
                     </div>
 
                     {/* ── Keemala-style centered layout: title + image left / text right ── */}
-                    <div
-                        ref={contentRef}
-                        className="relative z-10 w-full h-full flex flex-col items-center justify-center gap-10 px-4 pt-16 sm:pt-52 pb-16"
-                    >
-                        <div className=" flex flex-col items-center gap-5">
+                  <div
+    ref={contentRef}
+    className="relative z-10 w-full flex flex-col items-center px-4 sm:px-8 lg:px-16 pt-10 sm:pt-24 lg:pt-40 pb-10 sm:pb-16 gap-8 sm:gap-12"
+>
 
-                            {/* Logo badge (centered) */}
-                            <button
-                                className="text-white px-8 py-2 text-sm uppercase tracking-widest font-semibold"
-                                style={{
-                                    backgroundColor: "#FAA821",
-                                    maskImage: "url('/images/logo.png')",
-                                    WebkitMaskImage: "url('/images/logo.png')",
-                                    maskSize: "contain",
-                                    WebkitMaskSize: "cover",
-                                    maskPosition: "center",
-                                    WebkitMaskPosition: "center",
-                                    maskRepeat: "no-repeat",
-                                    WebkitMaskRepeat: "no-repeat",
-                                }}
-                            >
-                                <h3>Our Story</h3>
-                            </button>
+    {/* Decorative mask.svg — top right corner */}
+    <div className="absolute top-0 right-0 w-[180px] sm:w-[260px] lg:w-[380px] opacity-10 pointer-events-none select-none">
+        <img
+            src="/images/bg5.png"
+            alt=""
+            className="w-full h-auto object-contain"
+        />
+    </div>
 
-                            {/* Title (centered) */}
-                            <div className="text-center">
-                                <div className="w-10 h-px bg-[#FAA821] mb-3 mx-auto" />
-                                <h2 className="text-[#faa821] text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-2xl text-center">
-                                    Nepal's Premier<br />Adventure Destination
-                                </h2>
-                               
-                            </div>
+    {/* Badge + Title */}
+    <div className="flex flex-col items-center text-center w-full max-w-5xl gap-3 sm:gap-4">
+        <button
+            className="text-white px-8 py-2 text-xs sm:text-sm uppercase tracking-widest font-semibold"
+            style={{
+                backgroundColor: "#FAA821",
+                maskImage: "url('/images/logo.png')",
+                WebkitMaskImage: "url('/images/logo.png')",
+                maskSize: "contain",
+                WebkitMaskSize: "cover",
+                maskPosition: "center",
+                WebkitMaskPosition: "center",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
+            }}
+        >
+            Accommodation
+        </button>
 
-                           </div>  {/* Below title: image (left) + paragraphs (right) */}
-                            <div className=" flex flex-col lg:flex-row items-center justify-center gap-12 mt-6 max-w-6xl mx-auto">
-                                <div className="flex-shrink-0 w-full lg:w-1/2">
-                                    <div
-                                        className="bg-cover bg-center relative w-full rounded-sm"
-                                        style={{
-                                            backgroundImage: `url(/images/about3.jpeg)`,
-                                            maskImage: "url('/images/mask.png')",
-                                            WebkitMaskImage: "url('/images/mask.png')",
-                                            maskSize: "contain",
-                                            WebkitMaskSize: "contain",
-                                            maskPosition: "center",
-                                            WebkitMaskPosition: "center",
-                                            maskRepeat: "no-repeat",
-                                            WebkitMaskRepeat: "no-repeat",
-                                            height: "400px",
-                                            maxWidth: "100%",
-                                            filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.2))',
-                                        }}
-                                    ></div>
-                                </div>
+        <div className="w-10 h-px bg-[#FAA821] mx-auto" />
 
-                                <div className=" flex flex-col justify-center text-left lg:w-1/2">
-                                    <p className="text-black/90 text-base sm:text-xl tracking-wide leading-relaxed mb-5">
-                                        Founded with a vision to create unforgettable experiences, Harness Zipline and Adventure Resort has evolved into a sanctuary for those who crave both excitement and serenity. Far away from the everyday, our resort is a true wonderland of nature and thrill.
-                                    </p>
+        <h2 className="text-[#faa821] text-xl sm:text-3xl md:text-4xl font-bold leading-tight">
+            Nepal's Premier<br className="hidden sm:block" /> Stay Experience
+        </h2>
+    </div>
 
-                                    <p className="text-black/90 text-base sm:text-xl tracking-wide leading-relaxed mb-8">
-                                        From soaring through the treetops on exhilarating ziplines to unwinding in the tranquil beauty of nature, we offer an escape like no other. We take pride in offering Nepal's first-ever igloo rooms — a lavish retreat that seamlessly integrates adventure with modern comforts, with a variety of activities and experiences for every kind of guest.
-                                    </p>
+  
+    {/* Two-column: text left, image right */}
+    <div className="w-full max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
 
-                                  
-                                </div>
-                           
+        {/* Text */}
+        <div className="w-full lg:w-1/2 flex flex-col gap-5">
+            <p className="text-black/80 text-sm sm:text-base lg:text-lg tracking-wide leading-relaxed">
+                Founded with a vision to create unforgettable experiences, Harness Zipline
+                and Adventure Resort has evolved into a sanctuary for those who crave both
+                excitement and serenity. Far away from the everyday, our resort is a true
+                wonderland of nature and thrill.
+            </p>
+            <p className="text-black/80 text-sm sm:text-base lg:text-lg tracking-wide leading-relaxed">
+                From soaring through the treetops on exhilarating ziplines to unwinding in
+                the tranquil beauty of nature, we offer an escape like no other. We take
+                pride in offering Nepal's first-ever igloo rooms — a lavish retreat that
+                seamlessly integrates adventure with modern comforts.
+            </p>
 
-                        </div>
-                    </div>
+          
+        </div>
+
+        {/* Image */}
+        <div className="w-full lg:w-1/2">
+            <img
+                src="/images/room7.jpeg"
+                alt="Accommodation at Harness Resort"
+                className="w-full object-cover"
+                style={{
+                    height: "clamp(200px, 48vw, 420px)",
+                    maskImage: "url('/images/mask.png')",
+                    WebkitMaskImage: "url('/images/mask.png')",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.18))",
+                }}
+            />
+        </div>
+
+    </div>
+</div>
                 </div>
             </div>
 
-           <About2/>
-           <Roomlisting/>
+            <Roomlayouts/>
         </>
     )
 }
 
-export default AboutPage
+export default RoomPage

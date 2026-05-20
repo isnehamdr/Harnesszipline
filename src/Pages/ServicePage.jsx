@@ -1,195 +1,89 @@
 import React, { useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { servicesData } from '../data/servicesData'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ActivityPage = () => {
+const ServicePage = () => {
     const heroRef = useRef(null)
     const textRef = useRef(null)
     const contentSectionRef = useRef(null)
     const maskRef = useRef(null)
     const contentRef = useRef(null)
 
-    const services = [
-        {
-            id: 1,
-            image: "/images/room6.jpg",
-            title: "Tower Restaurant",
-            alt: "Tower Restaurant"
-        },
-        {
-            id: 2,
-            image: "/images/wed.jpeg",
-            title: "Wedding Destination",
-            alt: "Wedding Destination"
-        },
-        {
-            id: 3,
-            image: "/images/room6.jpg",
-            title: "Conference Room",
-            alt: "Conference Room"
-        }, 
-        {
-            id: 4,
-            image: "/images/room6.jpg",
-            title: "Adventure Park",
-            alt: "Adventure Park"
-        },
-        {
-            id: 5,
-            image: "/images/wed.jpeg",
-            title: "Spa & Wellness",
-            alt: "Spa & Wellness"
-        },
-        {
-            id: 6,
-            image: "/images/room6.jpg",
-            title: "Kids Zone",
-            alt: "Kids Zone"
-        }
-    ]
-
-    // useEffect(() => {
-    //     const ctx = gsap.context(() => {
-    //         // ── Hero entrance animation ──────────────────────────────
-    //         gsap.fromTo(
-    //             textRef.current,
-    //             { y: 80, opacity: 0 },
-    //             { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-    //         )
-
-    //         // ── Content section: scroll-over the hero ───────────────
-    //         gsap.fromTo(
-    //             contentSectionRef.current,
-    //             { yPercent: 100 },
-    //             {
-    //                 yPercent: 0,
-    //                 ease: 'power2.out',
-    //                 scrollTrigger: {
-    //                     trigger: heroRef.current,
-    //                     start: 'top top',
-    //                     end: 'bottom top',
-    //                     scrub: 0.8,
-    //                     pin: heroRef.current,
-    //                     pinSpacing: true,
-    //                 },
-    //             }
-    //         )
-
-    //         // ── Mask SVG animation ───────────────────────────────────
-    //         gsap.fromTo(
-    //             maskRef.current,
-    //             { scale: 1, opacity: 0, rotateZ: -5 },
-    //             {
-    //                 scale: 1,
-    //                 opacity: 1,
-    //                 rotateZ: 0,
-    //                 duration: 1.5,
-    //                 ease: 'back.out(0.5)',
-    //                 scrollTrigger: {
-    //                     trigger: heroRef.current,
-    //                     start: 'top center',
-    //                     end: 'bottom top',
-    //                     scrub: 1.2,
-    //                 },
-    //             }
-    //         )
-
-    //         // ── Content children with stagger ────────────────────────
-    //         if (contentRef.current && contentRef.current.children.length > 0) {
-    //             gsap.fromTo(
-    //                 contentRef.current.children,
-    //                 { opacity: 0, y: 60, scale: 0.95 },
-    //                 {
-    //                     opacity: 1,
-    //                     y: 0,
-    //                     scale: 1,
-    //                     duration: 0.8,
-    //                     stagger: 0.15,
-    //                     ease: 'elastic.out(0.6, 0.5)',
-    //                     scrollTrigger: {
-    //                         trigger: contentSectionRef.current,
-    //                         start: 'top 60%',
-    //                         end: 'top 30%',
-    //                         scrub: 0.5,
-    //                     },
-    //                 }
-    //             )
-    //         }
-    //     })
-
-    //     return () => ctx.revert()
-    // }, [])
-
     useEffect(() => {
-    const ctx = gsap.context(() => {
-        gsap.fromTo(
-            textRef.current,
-            { y: 80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-        )
-
-        gsap.fromTo(
-            contentSectionRef.current,
-            { yPercent: 100 },
-            {
-                yPercent: 0,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 0.8,
-                    pin: true,           // ✅ use `true` instead of heroRef.current
-                    pinSpacing: true,
-                    anticipatePin: 1,    // ✅ prevents jump/conflict
-                },
-            }
-        )
-
-        gsap.fromTo(
-            maskRef.current,
-            { scale: 1, opacity: 0, rotateZ: -5 },
-            {
-                scale: 1,
-                opacity: 1,
-                rotateZ: 0,
-                duration: 1.5,
-                ease: 'back.out(0.5)',
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: 'top center',
-                    end: 'bottom top',
-                    scrub: 1.2,
-                },
-            }
-        )
-
-        if (contentRef.current && contentRef.current.children.length > 0) {
+        const ctx = gsap.context(() => {
+            // ── Hero entrance animation ──────────────────────────────
             gsap.fromTo(
-                contentRef.current.children,
-                { opacity: 0, y: 60, scale: 0.95 },
+                textRef.current,
+                { y: 80, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+
+            // ── Content section: scroll-over the hero ───────────────
+            gsap.fromTo(
+                contentSectionRef.current,
+                { yPercent: 100 },
                 {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'elastic.out(0.6, 0.5)',
+                    yPercent: 0,
+                    ease: 'power2.out',
                     scrollTrigger: {
-                        trigger: contentSectionRef.current,
-                        start: 'top 60%',
-                        end: 'top 30%',
-                        scrub: 0.5,
+                        trigger: heroRef.current,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 0.8,
+                        pin: heroRef.current,
+                        pinSpacing: true,
                     },
                 }
             )
-        }
-    }, heroRef) // ✅ scope the context to heroRef
 
-    return () => ctx.revert()
-}, [])
+            // ── Mask SVG animation ───────────────────────────────────
+            gsap.fromTo(
+                maskRef.current,
+                { scale: 1, opacity: 0, rotateZ: -5 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    rotateZ: 0,
+                    duration: 1.5,
+                    ease: 'back.out(0.5)',
+                    scrollTrigger: {
+                        trigger: heroRef.current,
+                        start: 'top center',
+                        end: 'bottom top',
+                        scrub: 1.2,
+                    },
+                }
+            )
+
+            // ── Content children with stagger ────────────────────────
+            if (contentRef.current && contentRef.current.children.length > 0) {
+                gsap.fromTo(
+                    contentRef.current.children,
+                    { opacity: 0, y: 60, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        stagger: 0.15,
+                        ease: 'elastic.out(0.6, 0.5)',
+                        scrollTrigger: {
+                            trigger: contentSectionRef.current,
+                            start: 'top 60%',
+                            end: 'top 30%',
+                            scrub: 0.5,
+                        },
+                    }
+                )
+            }
+        })
+
+        return () => ctx.revert()
+    }, [])
 
     return (
         <>
@@ -201,7 +95,7 @@ const ActivityPage = () => {
             >
                 {/* Background Image */}
                 <img
-                    src="/images/swing.webp"
+                    src="/images/wed.jpeg"
                     alt="About Harness Zipline and Adventure Resort"
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />
@@ -213,12 +107,11 @@ const ActivityPage = () => {
                 <div className="relative z-20 w-full h-full flex flex-col justify-end items-center pb-10 lg:pb-20">
                     <div ref={textRef} className="text-center px-4">
                         <h2 className="text-white max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
-                          Activities
+                          Services
                         </h2>
 
                         <h2 className="text-[#faa821] max-w-3xl mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg mb-6">
-                            Experience and kill the fear
-                        </h2>
+Experiences the best service                        </h2>
                         
                         <p className="text-white/90 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed drop-shadow-md">
                             Escape the ordinary and immerse yourself in tranquility. Surrounded by lush forests, 
@@ -257,7 +150,7 @@ const ActivityPage = () => {
                         <div 
                             className="
                                 absolute 
-                                top-24
+                                top-0
                                 right-0 
                                 w-[300px]
                                 sm:w-[400px]
@@ -267,15 +160,14 @@ const ActivityPage = () => {
                                 h-[300px]
                                 sm:h-[400px]
                                 md:h-[500px]
-                                lg:h-[600px]
-                                xl:h-[700px]
+                                
                                 pointer-events-none
                                 opacity-30
                                 lg:opacity-40
                                 z-0
                             "
                             style={{
-                                backgroundImage: "url('/images/bg.png')",
+                                backgroundImage: "url('/images/sketch.png')",
                                 backgroundSize: "contain",
                                 backgroundPosition: "top right",
                                 backgroundRepeat: "no-repeat",
@@ -338,7 +230,7 @@ const ActivityPage = () => {
                                             WebkitMaskRepeat: "no-repeat",
                                         }}
                                     >
-                                        Activities
+                                     Services
                                     </button>
 
                                     <h2 className="
@@ -355,7 +247,7 @@ const ActivityPage = () => {
                                         relative
                                         z-30
                                     ">
-                                        Experience the Best Activities
+                                        Experience the Best Services
                                     </h2>
 
                                     <p className="
@@ -397,9 +289,10 @@ const ActivityPage = () => {
                                     relative
                                     z-30
                                 ">
-                                    {services.map((service) => (
-                                        <div
+                                    {servicesData.map((service) => (
+                                        <Link
                                             key={service.id}
+                                            to={`/services/${service.slug}`}
                                             className="
                                                 flex 
                                                 flex-col
@@ -409,6 +302,7 @@ const ActivityPage = () => {
                                                 transition-transform
                                                 duration-300
                                                 hover:-translate-y-2
+                                                focus:outline-none
                                             "
                                         >
                                             {/* Masked Image */}
@@ -469,7 +363,13 @@ const ActivityPage = () => {
                                             >
                                                 {service.title}
                                             </h3>
-                                        </div>
+                                            <p className="mt-2 max-w-sm text-center text-sm leading-relaxed text-black/70">
+                                                {service.tagline}
+                                            </p>
+                                            <span className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#faa821]">
+                                                View Details
+                                            </span>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -481,4 +381,4 @@ const ActivityPage = () => {
     )
 }
 
-export default ActivityPage
+export default ServicePage
